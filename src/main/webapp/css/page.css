@@ -1,0 +1,60 @@
+/* stypeType:0 默认*/
+.pagination{margin:5px 5px 0 0;display:block;overflow:hidden;clear:both;}
+.pagination select{float:left;}
+.pagination a{ height:18px; line-height:18px; float:left; padding:0px 5px; border: solid 1px #D6D6D6; margin-right: 8px;TEXT-DECORATION:none}
+.pagination span{ height:18px; line-height:18px; float:left; padding:0px 5px; margin-right:5px; min-width:1em; text-align:center; }
+.pagination .current{ background: #26B; color: #fff; border: solid 1px #D6D6D6; }
+.pagination span.current.next{ color:#999; border-color:#999; background:#fff;}
+.pagination span.current.prev{ color:#999; border-color:#999; background:#fff;}
+.pagination a.next{ border:1px solid #999; background:#fff; margin-right:5px; padding:0 5px;}
+
+
+/* stypeType:1 */
+DIV.czyx_pager {
+	padding:3px;
+	margin:3xp;
+	font-size:0.85em;
+	FONT-FAMILY: Tahoma,Helvetica,sans-serif;
+	TEXT-ALIGN: center
+}
+DIV.czyx_pager A {
+	BORDER: #ccdbe4 1px solid; 
+	PADDING: 2px 8px; 
+	COLOR: #0061de; 
+	MARGIN-RIGHT: 3px; 
+	TEXT-DECORATION: none;
+	BACKGROUND-POSITION: 50% bottom; 
+}
+DIV.czyx_pager A:hover {
+	BORDER: #2b55af 1px solid; 
+	COLOR: #fff; 
+	BACKGROUND-IMAGE: none; 
+	BACKGROUND-COLOR: #3666d4
+}
+DIV.czyx_pager A:active {
+	BORDER: #2b55af 1px solid; 
+	BACKGROUND-IMAGE: none; 
+	COLOR: #fff; 
+	BACKGROUND-COLOR: #3666d4
+}
+DIV.czyx_pager SPAN.current {
+	PADDING: 2px 6px; 
+	FONT-WEIGHT: bold; 
+	COLOR: #000; 
+	MARGIN-RIGHT: 3px;	
+}
+DIV.czyx_pager SPAN.disabled {DISPLAY: none}
+DIV.czyx_pager A.next {
+	BORDER: #ccdbe4 2px solid; 
+	MARGIN: 0px 0px 0px 10px; 
+}
+DIV.czyx_pager A.next:hover {
+	BORDER: #2b55af 2px solid
+}
+DIV.czyx_pager A.prev {
+	BORDER: #ccdbe4 2px solid; 
+	MARGIN: 0px 10px 0px 0px; 
+}
+DIV.czyx_pager A.prev:hover {
+	BORDER: #2b55af 2px solid; 
+}

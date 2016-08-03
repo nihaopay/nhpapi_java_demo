@@ -1,0 +1,54 @@
+TABLE {
+	/*FONT-SIZE: 12px;
+	COLOR: #000000*/
+}
+.TitleLine {
+	padding-left: 12px;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	COLOR: #ffffff;
+	background-color: #578b43;
+	height: 28px;
+	padding-top: 6px;
+	text-align: center;
+}
+
+.TitleLine2 {
+	padding-left: 12px;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	COLOR: #ffffff;
+	background-color: #578b43;
+	height: 20px;
+	padding-top: 4px;
+}
+
+.Titleline2_bg {
+	background-color: #f3f3ec;
+	border-bottom: 2px solid #578b43;
+	padding: 10px;
+}
+
+.Titleline2td {
+	height: 18px;
+}
+
+.vt9_title {
+	font-weight: bold;
+	font-size: 12px;
+	color: #2F2F2F;
+	background-color: #CCCCCC;
+	height: 20px;
+	line-height: 24px;
+}
+
+.T9_blackB {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	COLOR: #008000;
+	LINE-height: 25px;
+	TEXT-DECORATION: none;
+	TEXT-align: left;
+	/*background-color: #cecece;*/
+	padding-left: 10px;
+}
