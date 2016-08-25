@@ -30,7 +30,10 @@
 		<div class="form-group">
 			<label for="callback_url" class="col-sm-2 control-label">Return URL*</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" name="callback_url" id="callback_url" value="http://demo.aurfy.cn:8007/callback" required>
+				<select name="callback_url" id="callback_url" class="form-control" required>
+					<option value='http://demo.aurfy.cn:8007/callback' >http://demo.aurfy.cn:8007/callback</option>
+					<option value='http://demo.aurfy.cn:8007/apicallback.jsp'>http://demo.aurfy.cn:8007/apicallback.jsp</option>
+				</select>
 			</div>
 		</div>
 		<div class="form-group">
