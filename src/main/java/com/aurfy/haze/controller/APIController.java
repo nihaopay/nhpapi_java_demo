@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONArray;
 import com.aurfy.haze.utils.HttpRequest;
 import com.aurfy.haze.web.vo.API.APICancelReqVO;
 import com.aurfy.haze.web.vo.API.APICaptureReqVO;
@@ -260,6 +261,29 @@ public class APIController {
 			logger.error(e.getMessage(), e);
 			return new ModelAndView("callback", "result", e.getMessage());
 		}
+	}
+	
+	@RequestMapping(value = "/APIQrcode", method = RequestMethod.POST)
+	public ModelAndView APIQrcode(HttpServletRequest request,
+			@ModelAttribute("payReq") @Validated APISecurePayReqVO payReq, BindingResult errors,
+			HttpServletResponse resp) {
+		ModelAndView mv=new ModelAndView("qrCodePay");
+		try {
+			if (errors.hasErrors()) {
+				resp.getWriter().print(errors.getAllErrors());
+			}
+			logger.info("Do API Qrcode: " + payReq.getInput());
+			System.out.println(payReq.getUrl()+"================");
+			String result = HttpRequest.sendAuthPost(payReq.getUrl(), payReq.getInput(), "Bearer " + payReq.getToken());
+			logger.info("get response from php_API: " + result);
+			Map<Object,Object> map=	(Map<Object,Object>)JSONArray.parse(result);
+			mv.addObject("url", payReq.getUrl().substring(0, payReq.getUrl().length()-24));
+			mv.addObject("resultMap",map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage(), e);
+		}
+		return mv;
 	}
 
 	public static String getClientInfo(HttpServletRequest request) {

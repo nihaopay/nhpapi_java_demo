@@ -45,6 +45,9 @@
 					<li><h4>
 							<a href="apiListTransactions.jsp" target="_blank">List transactions</a>
 						</h4></li>
+					<li><h4>
+							<a href="apiQrcode.jsp" target="_blank">Wechat Qrcode</a>
+						</h4></li>
 				</ul>
 			</div>
 		</div>
