@@ -28,7 +28,7 @@
 		</div>
 		<h4>Merchant Settings (normally hidden)</h4>
 		<div class="form-group">
-			<label for="callback_url" class="col-sm-2 control-label">Return URL*</label>
+			<label for="callback_url" class="col-sm-2 control-label">Callback URL*</label>
 			<div class="col-sm-10">
 				<select name="callback_url" id="callback_url" class="form-control" required>
 					<option value='http://demo.aurfy.cn:8007/callback' >http://demo.aurfy.cn:8007/callback</option>
@@ -37,7 +37,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="ipn_url" class="col-sm-2 control-label">Callback URL*</label>
+			<label for="ipn_url" class="col-sm-2 control-label">IPN URL*</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" name="ipn_url" id="ipn_url" value="http://demo.aurfy.cn:8007/ipn" required>
 			</div>
