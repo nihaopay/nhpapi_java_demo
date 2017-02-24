@@ -31,8 +31,8 @@
 				<label for="url" class="col-sm-2 control-label">API URL*</label>
 				<div class="col-sm-10">
 					<select name="url" id="url" class="form-control" required>
-						<option value='http://api.test.nihaopay.com/v1.1/transactions/{transaction_id}/refund' selected>http://api.test.nihaopay.com/v1.1/transactions/{transaction_id}/refund</option>
-						<option value='http://devapi.aurfy.cn:8007/v1.1/transactions/{transaction_id}/refund'>http://devapi.aurfy.cn:8007/v1.1/transactions/{transaction_id}/refund</option>
+						<option value='https://apitest.nihaopay.com/v1.2/transactions/{transaction_id}/refund' selected>https://apitest.nihaopay.com/v1.2/transactions/{transaction_id}/refund</option>
+						<option value='https://api.nihaopay.com/v1.2/transactions/{transaction_id}/refund'>https://api.nihaopay.com/v1.2/transactions/{transaction_id}/refund</option>
 					</select>
 				</div>
 			</div>
@@ -44,14 +44,13 @@
 						value="4847fed22494dc22b1b1a478b34e374e0b429608f31adf289704b4ea093e60a8" required>
 				</div>
 			</div>
-			<br />
 			<h4>Customer Entered Information</h4>
 			<div class="form-group">
-				<label for="amount" class="col-sm-2 control-label">Order
-					Amount*</label>
+				<label for="transaction_id" class="col-sm-2 control-label">Transaction
+					ID*</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="amount" name="amount"
-						placeholder="Amount" value="1" required>
+					<input type="text" class="form-control" id="transaction_id"
+						name="transaction_id" placeholder="Trensaction ID" value="" required>
 				</div>
 			</div>
 			<div class="form-group">
@@ -69,11 +68,19 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="transaction_id" class="col-sm-2 control-label">Trensaction
-					ID*</label>
+				<label for="amount" class="col-sm-2 control-label">Refund
+					Amount*</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="transaction_id"
-						name="transaction_id" placeholder="Trensaction ID" value="" required>
+					<input type="text" class="form-control" id="amount" name="amount"
+						placeholder="Amount" value="1" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="amount" class="col-sm-2 control-label">Refund
+					RMB Amount*</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="rmb_amount" name="rmb_amount"
+						placeholder="RMB Amount" >
 				</div>
 			</div>
 			<div class="form-group">

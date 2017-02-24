@@ -16,6 +16,7 @@ public class APISecurePayReqVO implements VO{
 	private String vendor;
 	private String reference;
 	private String amount;
+	private String rmb_amount;
 	private String currency;
 	private String description;
 	private String terminal;
@@ -26,7 +27,15 @@ public class APISecurePayReqVO implements VO{
 	public String getInput(){
 		StringBuilder result=new StringBuilder();
 		result.append("callback_url="+ callback_url + "&ipn_url=" + ipn_url + "&vendor=" + vendor);
-		result.append("&reference=" + reference + "&amount=" + amount+ "&currency=" + currency);
+		result.append("&reference=" + reference + "&currency=" + currency);
+		
+		if(!(amount==null||amount.isEmpty())){
+			result.append("&amount=" + amount);
+		}
+		
+		if(!(rmb_amount==null||rmb_amount.isEmpty())){
+			result.append("&rmb_amount=" + rmb_amount);
+		}
 		if(!(description==null||description.isEmpty())){
 			result.append("&description=" + description);
 		}
@@ -46,17 +55,17 @@ public class APISecurePayReqVO implements VO{
 	}
 
 
+
 	@Override
 	public String toString() {
 		return "APISecurePayReqVO [url=" + url + ", callback_url="
-				+ callback_url + ", ipn_url=" + ipn_url + ", vendor=" + vendor
-				+ ", reference=" + reference + ", amount=" + amount
+				+ callback_url + ", show_url=" + show_url + ", ipn_url="
+				+ ipn_url + ", vendor=" + vendor + ", reference=" + reference
+				+ ", amount=" + amount + ", rmb_amount=" + rmb_amount
 				+ ", currency=" + currency + ", description=" + description
 				+ ", terminal=" + terminal + ", timeout=" + timeout + ", note="
 				+ note + ", token=" + token + "]";
 	}
-
-
 
 
 
@@ -119,6 +128,17 @@ public class APISecurePayReqVO implements VO{
 	}
 	public void setToken(String token) {
 		this.token = token;
+	}
+	
+
+
+	public String getRmb_amount() {
+		return rmb_amount;
+	}
+
+
+	public void setRmb_amount(String rmb_amount) {
+		this.rmb_amount = rmb_amount;
 	}
 
 

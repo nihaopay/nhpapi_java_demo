@@ -14,6 +14,7 @@ public class APIExpressPayReqVO implements VO {
 	private String reference;
 	private String amount;
 	private String currency;
+	private String rmb_amount;
 	private String card_number;
 	private String card_exp_month;
 	private String card_exp_year;
@@ -24,12 +25,19 @@ public class APIExpressPayReqVO implements VO {
 
 	public String getInput() {
 		StringBuilder result = new StringBuilder();
-		result.append("amount=" + amount + "&currency=" + currency + "&card_number=" + card_number + "&card_exp_month="
-				+ card_exp_month);
-		result.append("&card_exp_year=" + card_exp_year + "&card_cvv=" + card_cvv + "&capture=" + capture);
+		result.append("currency=" + currency + "&card_number=" + card_number + "&card_exp_month="
+				+ card_exp_month+"&card_exp_year=" + card_exp_year + "&card_cvv=" + card_cvv + "&capture=" + capture);
 		if (!(reference == null || reference.isEmpty())) {
 			result.append("&reference=" + reference);
 		}
+		if(!(amount==null||amount.isEmpty())){
+			result.append("&amount=" + amount);
+		}
+		
+		if(!(rmb_amount==null||rmb_amount.isEmpty())){
+			result.append("&rmb_amount=" + rmb_amount);
+		}
+		
 		if (!(description == null || description.isEmpty())) {
 			result.append("&description=" + description);
 		}
@@ -39,6 +47,15 @@ public class APIExpressPayReqVO implements VO {
 		return result.toString();
 	}
 
+
+	public String getRmb_amount() {
+		return rmb_amount;
+	}
+
+
+	public void setRmb_amount(String rmb_amount) {
+		this.rmb_amount = rmb_amount;
+	}
 	public String getUrl() {
 		return url;
 	}
@@ -135,35 +152,17 @@ public class APIExpressPayReqVO implements VO {
 		this.note = note;
 	}
 
+
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("APIExpressPayReqVO [url=");
-		builder.append(url);
-		builder.append(", token=");
-		builder.append(token);
-		builder.append(", reference=");
-		builder.append(reference);
-		builder.append(", amount=");
-		builder.append(amount);
-		builder.append(", currency=");
-		builder.append(currency);
-		builder.append(", card_number=");
-		builder.append(card_number);
-		builder.append(", card_exp_month=");
-		builder.append(card_exp_month);
-		builder.append(", card_exp_year=");
-		builder.append(card_exp_year);
-		builder.append(", card_cvv=");
-		builder.append(card_cvv);
-		builder.append(", capture=");
-		builder.append(capture);
-		builder.append(", description=");
-		builder.append(description);
-		builder.append(", note=");
-		builder.append(note);
-		builder.append("]");
-		return builder.toString();
+		return "APIExpressPayReqVO [url=" + url + ", token=" + token
+				+ ", reference=" + reference + ", amount=" + amount
+				+ ", currency=" + currency + ", rmb_amount=" + rmb_amount
+				+ ", card_number=" + card_number + ", card_exp_month="
+				+ card_exp_month + ", card_exp_year=" + card_exp_year
+				+ ", card_cvv=" + card_cvv + ", capture=" + capture
+				+ ", description=" + description + ", note=" + note + "]";
 	}
+
 
 }

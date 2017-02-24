@@ -21,20 +21,18 @@
 			<label for="url" class="col-sm-2 control-label">API URL*</label>
 			<div class="col-sm-10">
 				<select name="url" id="url" class="form-control" required>
-					<option value='http://api.test.nihaopay.com/v1.2/transactions/qrcode' selected>http://api.test.nihaopay.com/v1.2/transactions/qrcode</option>
-					
-					<option value='http://devapi.aurfy.cn:8007/v1.2/transactions/qrcode'>http://devapi.aurfy.cn:8007/v1.2/transactions/qrcode</option>
+					<option value='https://apitest.nihaopay.com/v1.2/transactions/qrcode' selected>NihaoPay Test API URL</option>
+					<option value='https://api.nihaopay.com/v1.2/transactions/qrcode'>NihaoPay Live API URL</option>
 				</select>
 			</div>
 		</div>
-		<h4>Merchant Settings (normally hidden)</h4>
+		<h4>Merchant Settings</h4>
 		<div class="form-group">
 			<label for="ipn_url" class="col-sm-2 control-label">IPN URL*</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" name="ipn_url" id="ipn_url" value="http://demo.aurfy.cn:8007/ipn" required>
 			</div>
 		</div>
-		
 		<div class="form-group">
 			<label for="token" class="col-sm-2 control-label">Token*</label>
 			<div class="col-sm-10">
@@ -56,12 +54,6 @@ int i=(int)(number * 10000);
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="amount" class="col-sm-2 control-label">Order Amount*</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" id="amount" name="amount" required placeholder="Amount" value="2">
-			</div>
-		</div>
-		<div class="form-group">
 			<label for="currency" class="col-sm-2 control-label">Order Currency*</label>
 			<div class="col-sm-10">
 				<select name="currency" id="currency" class="form-control" required>
@@ -72,6 +64,18 @@ int i=(int)(number * 10000);
 					<option value='CAD'>CAD</option>
 					<option value='HKD'>HKD</option>
 				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="amount" class="col-sm-2 control-label">Order Amount*</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="amount" name="amount"  placeholder="Amount" value="2">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="amount" class="col-sm-2 control-label">RMB Amount*</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="rmb_amount" name="rmb_amount"  placeholder="Amount">
 			</div>
 		</div>
 		<div class="form-group">
@@ -101,6 +105,7 @@ int i=(int)(number * 10000);
 				<input type="text" class="form-control" id="note" name="note" placeholder="Enter Note">
 			</div>
 		</div>
+		<input type="hidden" class="form-control" id="vendor" name="vendor" value="wechatpay">
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<button type="submit" class="btn btn-default">Submit</button>

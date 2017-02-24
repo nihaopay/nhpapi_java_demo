@@ -31,8 +31,8 @@
 				<label for="url" class="col-sm-2 control-label">API URL*</label>
 				<div class="col-sm-10">
 					<select name="url" id="url" class="form-control" required>
-						<option value='http://api.test.nihaopay.com/v1.1/transactions/{transaction_id}/cancel' selected>http://api.test.nihaopay.com/v1.1/transactions/{transaction_id}/cancel</option>
-						<option value='http://devapi.aurfy.cn:8007/v1.1/transactions/{transaction_id}/cancel'>http://devapi.aurfy.cn:8007/v1.1/transactions/{transaction_id}/cancel</option>
+						<option value='https://apitest.nihaopay.com/v1.2/transactions/{transaction_id}/cancel' selected>https://apitest.nihaopay.com/v1.2/transactions/{transaction_id}/cancel</option>
+						<option value='https://api.nihaopay.com/v1.2/transactions/{transaction_id}/cancel'>https://api.nihaopay.com/v1.2/transactions/{transaction_id}/cancel</option>
 					</select>
 				</div>
 			</div>

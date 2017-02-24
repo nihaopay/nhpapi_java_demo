@@ -21,19 +21,16 @@
 			<label for="url" class="col-sm-2 control-label">API URL*</label>
 			<div class="col-sm-10">
 				<select name="url" id="url" class="form-control" required>
-					<option value='http://api.test.nihaopay.com/v1.1/transactions/securepay' selected>http://api.test.nihaopay.com/v1.1/transactions/securepay</option>
-					<option value='http://devapi.aurfy.cn:8007/v1.1/transactions/securepay'>http://devapi.aurfy.cn:8007/v1.1/transactions/securepay</option>
+					<option value='https://apitest.nihaopay.com/v1.2/transactions/securepay' selected>NihaoPay Test API URL</option>
+					<option value='https://api.nihaopay.com/v1.2/transactions/securepay'>NihaoPay Live API URL</option>
 				</select>
 			</div>
 		</div>
-		<h4>Merchant Settings (normally hidden)</h4>
+		<h4>Merchant Settings</h4>
 		<div class="form-group">
 			<label for="callback_url" class="col-sm-2 control-label">Callback URL*</label>
 			<div class="col-sm-10">
-				<select name="callback_url" id="callback_url" class="form-control" required>
-					<option value='http://demo.aurfy.cn:8007/callback' >http://demo.aurfy.cn:8007/callback</option>
-					<option value='http://demo.aurfy.cn:8007/apicallback.jsp'>http://demo.aurfy.cn:8007/apicallback.jsp</option>
-				</select>
+				<input type="text" class="form-control" name="callback_url" id="callback_url" value="http://demo.aurfy.cn:8007/callback" required>
 			</div>
 		</div>
 		<div class="form-group">
@@ -56,7 +53,6 @@
 				<input type="text" class="form-control" name="token" id="token" value="4847fed22494dc22b1b1a478b34e374e0b429608f31adf289704b4ea093e60a8" required>
 			</div>
 		</div>
-		<br />
 		<h4>Customer Entered Information</h4>
 		<div class="form-group">
 			<label for="vendor" class="col-sm-2 control-label">Vendor*</label>
@@ -82,12 +78,6 @@ int i=(int)(number * 10000);
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="amount" class="col-sm-2 control-label">Order Amount*</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" id="amount" name="amount" required placeholder="Amount" value="2">
-			</div>
-		</div>
-		<div class="form-group">
 			<label for="currency" class="col-sm-2 control-label">Order Currency*</label>
 			<div class="col-sm-10">
 				<select name="currency" id="currency" class="form-control" required>
@@ -100,6 +90,20 @@ int i=(int)(number * 10000);
 				</select>
 			</div>
 		</div>
+		<div class="form-group">
+			<label for="amount" class="col-sm-2 control-label">Order Amount*</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="amount" name="amount"  placeholder="Amount" value="2">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="amount" class="col-sm-2 control-label">RMB Amount*</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="rmb_amount" name="rmb_amount"  placeholder="RMB Amount">
+			</div>
+		</div>
+		
 		<div class="form-group">
 			<label for="terminal" class="col-sm-2 control-label">Terminal*</label>
 			<div class="col-sm-10">

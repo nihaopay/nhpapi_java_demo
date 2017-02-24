@@ -31,8 +31,8 @@
 				<label for="url" class="col-sm-2 control-label">API URL*</label>
 				<div class="col-sm-10">
 					<select name="url" id="url" class="form-control" required>
-						<option value='http://api.test.nihaopay.com/v1.1/transactions/expresspay' selected>http://api.test.nihaopay.com/v1.1/transactions/expresspay</option>
-						<option value='http://devapi.aurfy.cn:8007/v1.1/transactions/expresspay'>http://devapi.aurfy.cn:8007/v1.1/transactions/expresspay</option>
+						<option value='https://apitest.nihaopay.com/v1.2/transactions/expresspay' selected>NihaoPay Test API URL</option>
+						<option value='https://api.nihaopay.com/v1.2/transactions/expresspay'>NihaoPay Live API URL</option>
 					    
 					</select>
 				</div>
@@ -63,14 +63,6 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="amount" class="col-sm-2 control-label">Order
-					Amount*</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="amount" name="amount" required
-						placeholder="Amount" value="2">
-				</div>
-			</div>
-			<div class="form-group">
 				<label for="currency" class="col-sm-2 control-label">Order
 					Currency*</label>
 				<div class="col-sm-10">
@@ -82,6 +74,21 @@
 						<option value='CAD'>CAD</option>
 						<option value='HKD'>HKD</option>
 					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="amount" class="col-sm-2 control-label">Order
+					Amount*</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="amount" name="amount" 
+						placeholder="Amount" value="2">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="amount" class="col-sm-2 control-label">RMB Amount*</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="rmb_amount" name="rmb_amount" 
+						placeholder="RMB Amount" >
 				</div>
 			</div>
 			<div class="form-group">

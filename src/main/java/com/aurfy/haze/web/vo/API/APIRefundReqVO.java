@@ -14,17 +14,36 @@ public class APIRefundReqVO implements VO {
 	private String transaction_id;
 	private String amount;
 	private String currency;
+	private String rmb_amount;
 	private String reason;
 
 	public String getInput() {
 		StringBuilder result = new StringBuilder();
-		result.append("amount=" + amount + "&currency=" + currency);
+		result.append("currency=" + currency);
+		
+		if(!(amount==null||amount.isEmpty())){
+			result.append("&amount=" + amount);
+		}
+		
+		if(!(rmb_amount==null||rmb_amount.isEmpty())){
+			result.append("&rmb_amount=" + rmb_amount);
+		}
+		
 		if (!(reason == null || reason.isEmpty())) {
 			result.append("&reason=" + reason);
 		}
 		return result.toString();
 	}
 
+	public String getRmb_amount() {
+		return rmb_amount;
+	}
+
+
+	public void setRmb_amount(String rmb_amount) {
+		this.rmb_amount = rmb_amount;
+	}
+	
 	public String getAmount() {
 		return amount;
 	}
@@ -75,21 +94,10 @@ public class APIRefundReqVO implements VO {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("APIRefundReqVO [url=");
-		builder.append(url);
-		builder.append(", token=");
-		builder.append(token);
-		builder.append(", transaction_id=");
-		builder.append(transaction_id);
-		builder.append(", amount=");
-		builder.append(amount);
-		builder.append(", currency=");
-		builder.append(currency);
-		builder.append(", reason=");
-		builder.append(reason);
-		builder.append("]");
-		return builder.toString();
+		return "APIRefundReqVO [url=" + url + ", token=" + token
+				+ ", transaction_id=" + transaction_id + ", amount=" + amount
+				+ ", currency=" + currency + ", rmb_amount=" + rmb_amount
+				+ ", reason=" + reason + "]";
 	}
-
+	
 }
