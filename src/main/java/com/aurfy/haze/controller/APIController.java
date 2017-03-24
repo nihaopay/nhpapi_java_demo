@@ -263,6 +263,7 @@ public class APIController {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/APIQrcode", method = RequestMethod.POST)
 	public ModelAndView APIQrcode(HttpServletRequest request,
 			@ModelAttribute("payReq") @Validated APISecurePayReqVO payReq, BindingResult errors,
@@ -277,7 +278,6 @@ public class APIController {
 			String result = HttpRequest.sendAuthPost(payReq.getUrl(), payReq.getInput(), "Bearer " + payReq.getToken());
 			logger.info("get response from php_API: " + result);
 			Map<Object,Object> map=	(Map<Object,Object>)JSONArray.parse(result);
-			mv.addObject("url", payReq.getUrl().substring(0, payReq.getUrl().length()-24));
 			mv.addObject("resultMap",map);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -9,39 +9,8 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="format-detection" content="telephone=no">
         <title>NihaoPay</title>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-
-		<script type="text/javascript">
-		var _status = "";
-		var final_data = "";
-		function query(){
-    		var url = "${url}wechatpay/query/${resultMap.id}?callback=?";
-    		jQuery.ajax({
-                url: url,
-    			async: false,
-    			dataType: "jsonp",
-                success: function (data) {
-    				if(_status != data.status) {
-    					_status = data.status;
-    					$("#_message").text(data.msg);
-    				}
-    				if(data.status == 'SUCCESS' || data.status == 'FAIL') {
-						$("#pay_form").attr("method", data.formMethod);
-						$("#pay_form").attr("action", data.formUrl);
-						$("#from_content").html(data.formStr);
-						var timeout = setTimeout(function() {
-							clearTimeout(timeout);
-							document.getElementById("pay_form").submit();
-						}, 3000);
-					 }
-                }
-    		});
-			setTimeout(query, 3000);
-		}
-			$(function() {
-				query();
-			});
-		</script>
+        <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
     </head>
     <body>
     <div class="top-z">
@@ -64,18 +33,14 @@
             </div>
             <div class="clear"></div>
             <div class="ewei-ma" >
-                <img src="${url}wechatpay/getQRCode?qrStr=${resultMap.code_url}">
-    			<div class="msg" id="_message"></div>
+                 <div id="qrcodeimg"></div>
+                <script>
+					jQuery('#qrcodeimg').qrcode("${resultMap.code_url}");
+				</script>
+    			<div class="msg" id="_message">Need merchant query payment result.</div>
             </div>
         </div>
     </div>
-	<div>
-		<form id="pay_form" action="" method="POST">
-            <div id="from_content">
-			</div>
-		</form>
-	</div>
-	<hr>
     <!-- <end>-->
     </body>
 </html>

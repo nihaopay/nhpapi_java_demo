@@ -39,6 +39,7 @@
 				<input type="text" class="form-control" name="token" id="token" value="4847fed22494dc22b1b1a478b34e374e0b429608f31adf289704b4ea093e60a8" required>
 			</div>
 		</div>
+		
 		<br />
 					<% 
 java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyyMMddHHmmss");
@@ -47,6 +48,13 @@ String strDate = formatter.format(currentTime); //将日期时间格式化
 double number=Math.random()*100;
 int i=(int)(number * 10000);
 %>
+		<div class="form-group">
+			<label for="vendor" class="col-sm-2 control-label">Vendor*</label>
+			<div class="col-sm-10">
+				<input id="vendor" type="radio" name="vendor" checked="checked" value="wechatpay" required>WechatPay
+				<input id="vendor" type="radio" name="vendor" value="alipay" >AliPay
+			</div>
+		</div>
 		<div class="form-group">
 			<label for="reference" class="col-sm-2 control-label">Reference*</label>
 			<div class="col-sm-10">
