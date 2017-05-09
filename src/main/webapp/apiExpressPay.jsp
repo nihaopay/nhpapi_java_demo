@@ -56,10 +56,18 @@
 				int i = (int) (number * 10000);
 			%>
 			<div class="form-group">
-				<label for="reference" class="col-sm-2 control-label">Reference</label>
+				<label for="reference" class="col-sm-2 control-label">Reference*</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" id="reference"
 						name="reference" value='<%=strDate + i%>' required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="client_ip" class="col-sm-2 control-label">Client
+					ip*</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="client_ip" name="client_ip" 
+						placeholder="ip" value="180.167.25.154">
 				</div>
 			</div>
 			<div class="form-group">
@@ -85,7 +93,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="amount" class="col-sm-2 control-label">RMB Amount*</label>
+				<label for="amount" class="col-sm-2 control-label">RMB Amount</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" id="rmb_amount" name="rmb_amount" 
 						placeholder="RMB Amount" >
