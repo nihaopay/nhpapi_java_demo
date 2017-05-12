@@ -2,7 +2,11 @@ package com.aurfy.haze.controller;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONArray;
 import com.aurfy.haze.utils.HttpRequest;
+import com.aurfy.haze.utils.SecurityUtils;
 import com.aurfy.haze.web.vo.API.APICancelReqVO;
 import com.aurfy.haze.web.vo.API.APICaptureReqVO;
 import com.aurfy.haze.web.vo.API.APIExpressPayReqVO;
@@ -33,6 +38,8 @@ import com.aurfy.haze.web.vo.API.APISingleQueryReqVO;
 @Controller
 public class APIController {
 	private static final Logger logger = LoggerFactory.getLogger(APIController.class);
+	
+	private static final String token = "4847fed22494dc22b1b1a478b34e374e0b429608f31adf289704b4ea093e60a8";
 
 	@RequestMapping(value = "/APISecurePay", method = RequestMethod.POST)
 	public @ResponseBody void APISecurePay(HttpServletRequest request,
@@ -46,7 +53,7 @@ public class APIController {
 			String result = HttpRequest.sendAuthPost(payReq.getUrl(), payReq.getInput(), "Bearer " + payReq.getToken());
 			logger.info("get response from php_API: " + result);
 			resp.setCharacterEncoding("UTF-8");
-			resp.setHeader("Content-type", "text/html");//jquery post must return json type
+			resp.setHeader("Content-type", "text/html");// jquery post must return json type
 			resp.getWriter().print(result);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -65,7 +72,7 @@ public class APIController {
 			String result = HttpRequest.sendAuthPost(payReq.getUrl(), payReq.getInput(), "Bearer " + payReq.getToken());
 			logger.info("get response from php_API: " + result);
 			resp.setCharacterEncoding("UTF-8");
-			resp.setHeader("Content-type", "application/json");//jquery post must return json type
+			resp.setHeader("Content-type", "application/json");// jquery post must return json type
 			resp.getWriter().print(result);
 
 		} catch (Exception e) {
@@ -86,7 +93,7 @@ public class APIController {
 			String result = HttpRequest.sendAuthPost(url, payReq.getInput(), "Bearer " + payReq.getToken());
 			logger.info("get response from php_API: " + result);
 			resp.setCharacterEncoding("UTF-8");
-			resp.setHeader("Content-type", "application/json");//jquery post must return json type
+			resp.setHeader("Content-type", "application/json");// jquery post must return json type
 			resp.getWriter().print(result);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -106,7 +113,7 @@ public class APIController {
 			String result = HttpRequest.sendAuthPost(url, payReq.getInput(), "Bearer " + payReq.getToken());
 			logger.info("get response from php_API: " + result);
 			resp.setCharacterEncoding("UTF-8");
-			resp.setHeader("Content-type", "application/json");//jquery post must return json type
+			resp.setHeader("Content-type", "application/json");// jquery post must return json type
 			resp.getWriter().print(result);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -126,7 +133,7 @@ public class APIController {
 			String result = HttpRequest.sendAuthPost(url, "", "Bearer " + payReq.getToken());
 			logger.info("get response from php_API: " + result);
 			resp.setCharacterEncoding("UTF-8");
-			resp.setHeader("Content-type", "application/json");//jquery post must return json type
+			resp.setHeader("Content-type", "application/json");// jquery post must return json type
 			resp.getWriter().print(result);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -146,7 +153,7 @@ public class APIController {
 			String result = HttpRequest.sendAuthPost(url, "", "Bearer " + payReq.getToken());
 			logger.info("get response from php_API: " + result);
 			resp.setCharacterEncoding("UTF-8");
-			resp.setHeader("Content-type", "application/json");//jquery post must return json type
+			resp.setHeader("Content-type", "application/json");// jquery post must return json type
 			resp.getWriter().print(result);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -166,7 +173,7 @@ public class APIController {
 			String result = HttpRequest.sendAuthGet(url, null, "Bearer " + payReq.getToken());
 			logger.info("get response from php_API: " + result);
 			resp.setCharacterEncoding("UTF-8");
-			resp.setHeader("Content-type", "application/json");//jquery post must return json type
+			resp.setHeader("Content-type", "application/json");// jquery post must return json type
 			resp.getWriter().print(result);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -186,7 +193,7 @@ public class APIController {
 			String result = HttpRequest.sendAuthGet(url, null, "Bearer " + payReq.getToken());
 			logger.info("get response from php_API: " + result);
 			resp.setCharacterEncoding("UTF-8");
-			resp.setHeader("Content-type", "application/json");//jquery post must return json type
+			resp.setHeader("Content-type", "application/json");// jquery post must return json type
 			resp.getWriter().print(result);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -224,10 +231,32 @@ public class APIController {
 					str.append("\r\n " + key + " -> " + value);
 				}
 			}
+			Set<String> keySet = params.keySet();
+			List<String> keyList = new ArrayList<String>(keySet);
+			Collections.sort(keyList);
+			StringBuffer mdStr = new StringBuffer();
+			for (String key : keyList) {
+				String value = params.get(key)[0];
+				if (!key.equals("verify_sign") && params.get(key) != null && value != null && !value.equals("null")) {
+					mdStr.append(key + "=" + value + "&");
+				}
+			}
+			logger.info("sign prams string:" + mdStr.toString());
+			mdStr.append(SecurityUtils.MD5(token).toLowerCase());
+			logger.info("prams and token sign string:" + mdStr.toString());
+			String verify_sign = params.get("verify_sign")[0];
+			String sign = SecurityUtils.MD5(mdStr.toString()).toLowerCase();
+			logger.info("sign string:" + sign);
+			logger.info("verify_sign string:" + verify_sign);
+			if (sign.equals(verify_sign)) {
+				str.append("\r\n sign_vlidated -> true");
+			} else {
+				str.append("\r\n sign_vlidated -> false");
+			}
 			logger.info("IPN: " + str.toString());
-			response.setHeader("Content-type", "application/json");//jquery post must return json type
+			response.setHeader("Content-type", "application/json");// jquery post must return json type
 			response.getWriter().print(str);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage(), e);
@@ -244,7 +273,6 @@ public class APIController {
 			if (params.size() < 1) {
 				return new ModelAndView("callback", "result", "Response status:" + HttpServletResponse.SC_NO_CONTENT);
 			}
-
 			StringBuilder str = new StringBuilder();
 			str.append("Form Data:");
 			for (String key : params.keySet()) {
@@ -254,6 +282,28 @@ public class APIController {
 					str.append("<br/>" + key + "=" + value);
 				}
 			}
+			Set<String> keySet = params.keySet();
+			List<String> keyList = new ArrayList<String>(keySet);
+			Collections.sort(keyList);
+			StringBuffer mdStr = new StringBuffer();
+			for (String key : keyList) {
+				String value = params.get(key)[0];
+				if (!key.equals("verify_sign") && params.get(key) != null && value != null && !value.equals("null")) {
+					mdStr.append(key + "=" + value + "&");
+				}
+			}
+			logger.info("sign prams string:" + mdStr.toString());
+			mdStr.append(SecurityUtils.MD5(token).toLowerCase());
+			logger.info("prams and token sign string:" + mdStr.toString());
+			String verify_sign = params.get("verify_sign")[0];
+			String sign = SecurityUtils.MD5(mdStr.toString()).toLowerCase();
+			logger.info("sign string:" + sign);
+			logger.info("verify_sign string:" + verify_sign);
+			if (sign.equals(verify_sign)) {
+				str.append("<br/>sign_vlidated -> true");
+			} else {
+				str.append("<br/>sign_vlidated -> false");
+			}
 			logger.info("Callback " + str.toString());
 			return new ModelAndView("callback", "result", str.toString());
 		} catch (Exception e) {
@@ -262,23 +312,23 @@ public class APIController {
 			return new ModelAndView("callback", "result", e.getMessage());
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/APIQrcode", method = RequestMethod.POST)
 	public ModelAndView APIQrcode(HttpServletRequest request,
 			@ModelAttribute("payReq") @Validated APISecurePayReqVO payReq, BindingResult errors,
 			HttpServletResponse resp) {
-		ModelAndView mv=new ModelAndView("qrCodePay");
+		ModelAndView mv = new ModelAndView("qrCodePay");
 		try {
 			if (errors.hasErrors()) {
 				resp.getWriter().print(errors.getAllErrors());
 			}
 			logger.info("Do API Qrcode: " + payReq.getInput());
-			System.out.println(payReq.getUrl()+"================");
+			System.out.println(payReq.getUrl() + "================");
 			String result = HttpRequest.sendAuthPost(payReq.getUrl(), payReq.getInput(), "Bearer " + payReq.getToken());
 			logger.info("get response from php_API: " + result);
-			Map<Object,Object> map=	(Map<Object,Object>)JSONArray.parse(result);
-			mv.addObject("resultMap",map);
+			Map<Object, Object> map = (Map<Object, Object>) JSONArray.parse(result);
+			mv.addObject("resultMap", map);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage(), e);
