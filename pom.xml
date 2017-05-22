@@ -100,19 +100,11 @@
 
 	</dependencies>
 	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
-			<resource>
-				<directory>${runtime.env}</directory>
-			</resource>
-		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>${mvn.plugin.war.version}</version>
+				<version>2.5</version>
 				<configuration>
 					<!-- <warSourceDirectory>${basedir}/WebContent</warSourceDirectory> -->
 					<warSourceExcludes>**/Thumbs.db</warSourceExcludes>
@@ -127,7 +119,6 @@
 						</manifest>
 						<manifestEntries>
 							<Version>${project.version}</Version>
-							<URL>${project.url}</URL>
 						</manifestEntries>
 					</archive>
 				</configuration>
