@@ -122,47 +122,4 @@ public class HttpRequest {
 		return result;
 	}
 
-	// private static void sendPost(String strURL, String param, String token) {
-	// try {
-	// HttpPost post = new HttpPost(strURL);
-	// // 创建参数队列
-	// List<NameValuePair> formparams = new ArrayList<NameValuePair>();
-	//
-	// UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, "UTF-8");
-	// post.setEntity(entity);
-	// CloseableHttpResponse response = null;
-	// CloseableHttpClient httpClient = null;
-	// try {
-	// httpClient = HttpClientBuilder.create().build();
-	// response = httpClient.execute(post);
-	//
-	// int statuscode = response.getStatusLine().getStatusCode();
-	// System.out.println(response.getEntity());
-	// EntityUtils.consume(response.getEntity());
-	// System.out.println(response.getEntity());
-	//
-	// // item.setHttpStatus(HttpStatus.parseByCode(statuscode + ""));
-	// // logger.info("txnID {} s2s response status:{}",item.getID(),item.getHttpStatus());
-	// // if (HttpStatus.OK.equals(item.getHttpStatus())) {
-	// // item.setDeliveryStatus(DeliveryStatusEnum.SUCCEED);
-	// // } else {
-	// // item.setDeliveryStatus(DeliveryStatusEnum.FAILED);
-	// // }
-	// } finally {
-	// try {
-	// httpClient.close();
-	// } catch (IOException e) {
-	// // ignore
-	// logger.warn("error closing http client.");
-	// }
-	// IOUtils.close(response);
-	//
-	// }
-	// } catch (Exception e) {
-	// logger.error("error send post request", e);
-	// } finally {
-	// //item.setUpdateDate(new Date());
-	// }
-	// }
-
 }
