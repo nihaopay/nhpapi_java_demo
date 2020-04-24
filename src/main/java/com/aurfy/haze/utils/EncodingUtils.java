@@ -3,8 +3,6 @@ package com.aurfy.haze.utils;
 import java.nio.charset.Charset;
 
 import org.apache.commons.codec.binary.Base64;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * 
@@ -12,9 +10,7 @@ import org.slf4j.LoggerFactory;
  *
  */
 public final class EncodingUtils {
-
-	private static final Logger logger = LoggerFactory.getLogger(EncodingUtils.class);
-
+	
 	public static final Charset ASCII = Charset.forName("US-ASCII");
 	public static final Charset ISO_8859_1 = Charset.forName("ISO-8859-1");
 	public static final Charset Big5 = Charset.forName("Big5");

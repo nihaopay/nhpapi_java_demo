@@ -149,8 +149,6 @@ public final class SecurityUtils {
 	public static String MD5(String str) {
 		return MD5(str, DEFAULT_ENCODING);
 	}
-
-	// TODO: move to bouncycastle md5
 	public static String MD5(String str, String encoding) {
 
 		if (str == null) {
@@ -285,7 +283,7 @@ public final class SecurityUtils {
 			KeyGenerator kgen = KeyGenerator.getInstance(ALGORITHM_AES);
 			SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
 			secureRandom.setSeed(password.getBytes(charset));
-			kgen.init(128, secureRandom);// ??? TODO: not understand 128位
+			kgen.init(128, secureRandom);
 			SecretKey secretKey = kgen.generateKey();
 			byte[] enCodeFormat = secretKey.getEncoded();
 			SecretKeySpec key = new SecretKeySpec(enCodeFormat, ALGORITHM_AES);
