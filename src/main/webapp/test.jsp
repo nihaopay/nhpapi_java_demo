@@ -13,11 +13,9 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h2>Home</h2>
-			<hr>
 			<div class="col-xs-12 col-sm-6">
 				<h3>
-					Call API <small>For Test and PRD</small>
+					Call NihaoPay API 
 				</h3>
 				<hr>
 				<ul>
